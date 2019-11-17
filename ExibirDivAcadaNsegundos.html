@@ -1,0 +1,72 @@
+<html>
+
+	<!-- CSS -->
+	<style>
+		.divClass{
+	  		display:none;
+		}
+		.active {
+	  		display:block;
+		}
+	</style>
+
+
+<body>
+
+<!-- Conteudo Body  -->
+	<div class="divClass active">
+	    Esta é a DIV numero 1
+	</div>
+
+	<div class="divClass">
+	    Esta e' a DIV de numero DOIS
+	</div>
+
+	<div class="divClass">
+	   Por fim, esta é a nossa terceira DIV
+	</div>
+
+
+<!-- Javascript -->
+<script>
+	/** @type {int} - 15 segundos */
+	var tempo = 5000;
+
+	/**
+	 *    Função usada para exibir ou esconder uma DIV a cada N segundos
+	 *    @return {void}
+	 */
+	function exibeOuEscondeDiv () {
+		//    escondendo a div visivel
+	    var divVisivel = document.querySelector('.divClass.active');
+	    divVisivel.classList.remove("active");
+
+	    //    se estamos no ultimo elemento, entao, voltamos ao primeiro
+	    var proximoElemento = divVisivel.nextElementSibling;
+
+	    //   verificamos se o proximo elemento e' uma DIV e como classe "divClass"
+	    //   do contrario, sabemos que chegamos no ultimo elemento e precisamos voltar
+	    //   ao primeiro.
+	    if (
+	    	null == proximoElemento || 
+	    	proximoElemento.tagName != 'DIV' || 
+	    	proximoElemento.classList.contains('divClass') == false) {
+	    	proximoElemento = document.querySelectorAll('.divClass')[0];
+	    }
+
+	    //    exibe elemento
+	    proximoElemento.classList.add("active");
+	}
+
+
+	//    Simula um jQuery onReady com javascript puro
+	document.addEventListener('DOMContentLoaded', function(){ 
+
+	    /** Executar o seguinte codigo a cada N segundos */
+	    setInterval(exibeOuEscondeDiv, tempo);
+
+	}, false);
+</script>
+
+</body>
+</html>
