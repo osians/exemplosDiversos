@@ -80,9 +80,9 @@ $result = Db::select("SELECT CURRENT_TIMESTAMP()");
 print_r($result);
 
 #exemplo 2 - Selecionando 1 unico registro e usando parametro BIND
-$result = Db::select(°SELECT * FROM tabela WHERE id = :id AND nome = :nome", array(':id' => 10, ':nome' => 'José'), true);
+$result = Db::select("SELECT * FROM tabela WHERE id = :id AND nome = :nome", array(':id' => 10, ':nome' => 'José'), true);
 print_r($result);
 
 # exemplo 3 - O mesmo exemplo de cima porem sem bind ou parametro de firstOnly
-$result = Db::select(°SELECT * FROM tabela WHERE id = 10 AND nome = 'José' LIMIT 1");
+$result = Db::select("SELECT * FROM tabela WHERE id = 10 AND nome = 'José' LIMIT 1");
 print_r($result);
